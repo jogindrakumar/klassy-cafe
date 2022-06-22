@@ -47,7 +47,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href=""><i class="ti-more"></i>View Slider</a></li>
+            <li><a href="{{route('banner-view')}}"><i class="ti-more"></i>View Slider</a></li>
             
           </ul>
         </li> 
