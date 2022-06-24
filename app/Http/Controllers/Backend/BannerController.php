@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use Illuminate\Http\Request;
+use Image;
 
 class BannerController extends Controller
 {
@@ -16,8 +17,8 @@ class BannerController extends Controller
     public function index()
     {
         //
-
-        return view('backend.banner.index');
+        $banners = Banner::all();
+        return view('backend.banner.index',compact('banners'));
     }
 
     /**
@@ -39,6 +40,28 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         //
+    
+        $request->validate([
+            
+        'image'             => 'required',
+        ]);
+
+        $image = $request->file('image');
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(1500,800)->save('upload/banner/'.$name_gen);
+        $save_url = 'upload/banner/'.$name_gen;
+
+        Banner::insert([
+
+        'image'               => $save_url,
+        ]);
+         $notification = array(
+            'message' => 'banner image  Inserted Successfully',
+            'alert-type' => 'success'
+                );
+        return redirect()->route('banner-view')->with($notification);
+    
+        
     }
 
     /**

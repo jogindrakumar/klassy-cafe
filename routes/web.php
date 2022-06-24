@@ -49,6 +49,7 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function(){
 
 Route::prefix('banner')->middleware(['auth:admin'])->group(function(){
 route::get('/index',[BannerController::class,'index'])->name('banner-view');
+route::post('/store',[BannerController::class,'store'])->name('image.store');
 });
 
 
