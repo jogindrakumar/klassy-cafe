@@ -14,12 +14,13 @@
     </tr>
   </thead>
   <tbody>
+     @php($i = 1)
     @foreach ($banners as $banner)
         
-   
+  
     <tr>
-      <th scope="row">1</th>
-      <td><img src="{{asset($banner->image)}}" alt="" style="width:200px; height:200px;"></td>
+      <th scope="row">{{$i++}}</th>
+      <td><img src="{{asset($banner->image)}}" alt="" style="width:200px; height:100px;"></td>
      
     </tr>
     @endforeach
