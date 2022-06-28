@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\MenuController;
 use App\Models\Admin;
 
 /*
@@ -50,6 +51,11 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function(){
 Route::prefix('banner')->middleware(['auth:admin'])->group(function(){
 route::get('/index',[BannerController::class,'index'])->name('banner-view');
 route::post('/store',[BannerController::class,'store'])->name('image.store');
+});
+Route::prefix('menu')->middleware(['auth:admin'])->group(function(){
+route::get('/index',[MenuController::class,'index'])->name('menu-view');
+route::get('/create',[MenuController::class,'create'])->name('menu-create');
+route::post('/store',[MenuController::class,'store'])->name('menu.store');
 });
 
 

@@ -55,13 +55,14 @@
           <a href="#">
             
             <i data-feather="bell"></i>
-            <span>What We Do</span>
+            <span>Menu</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href=""><i class="ti-more"></i>View What We Do</a></li>
+            <li><a href="{{route('menu-view')}}"><i class="ti-more"></i>View </a></li>
+            <li><a href="{{route('menu-create')}}"><i class="ti-more"></i>ADD</a></li>
             
           </ul>
         </li> 
